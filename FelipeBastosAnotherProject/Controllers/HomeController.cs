@@ -5,26 +5,33 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using FelipeBastosAnotherProject.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace FelipeBastosAnotherProject.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly FelipeBastosAnotherProjectContext _context;
+
+        public HomeController(FelipeBastosAnotherProjectContext context)
         {
-            return View();
+            _context = context;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            return View(await _context.Placar.OrderByDescending(x => x.pontos).Take(10).ToListAsync());
         }
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "Aplicação AV 3 - Desenvolvimento de Sistemas";
 
             return View();
         }
 
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
 
             return View();
         }

@@ -1,0 +1,43 @@
+﻿@model FelipeBastosAnotherProject.Models.VMPlacar
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>Placar</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Placar.Id" />
+            <div class="form-group">
+                <label asp-for="Placar.jogadorId" class="control-label"></label>
+                <select asp-for="Placar.jogadorId" asp-items="@(new SelectList(Model.Jogadors, "Id", "Nome"))" class="form-control"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Placar.pontos" class="control-label"></label>
+                <input asp-for="Placar.pontos" class="form-control" />
+                <span asp-validation-for="Placar.pontos" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Placar.data" class="control-label"></label>
+                <input asp-for="Placar.data" class="form-control" />
+                <span asp-validation-for="Placar.data" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,39 @@
+﻿@model FelipeBastosAnotherProject.Models.Placar
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+    <h4>Placar</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Pontos
+            @*Html.DisplayNameFor(model => model.pontos)*@
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.pontos)
+        </dd>
+        <dt>
+            Data
+            @*@Html.DisplayNameFor(model => model.data)*@
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.data)
+        </dd>
+        <dt>
+            JogadorId
+            @*@Html.DisplayNameFor(model => model.data)*@
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.jogadorId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Editar</a> |
+    <a asp-action="Index">Voltar</a>
+</div>
